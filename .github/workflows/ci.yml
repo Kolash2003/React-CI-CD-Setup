@@ -13,7 +13,7 @@ jobs:
             - name: "Setup Node JS"
               uses: actions/setup-node@v4
               with:
-                  node-version: "21"
+                  node-version: "22"
 
             - name: "Chech Node Version"
               run: node --version
@@ -25,9 +25,7 @@ jobs:
               run: ls
 
             - name: "Install Dependencies"
-              run: |
-                rm -rf package-lock.json node_modules
-                npm install
+              run: npm ci
 
             - name: "List Directories"
               run: ls

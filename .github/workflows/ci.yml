@@ -25,7 +25,7 @@ jobs:
               run: ls
 
             - name: "Install Dependencies"
-              run: npm install
+              run: npm ci
 
             - name: "List Directories"
               run: ls

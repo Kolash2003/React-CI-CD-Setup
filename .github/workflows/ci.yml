@@ -25,7 +25,9 @@ jobs:
               run: ls
 
             - name: "Install Dependencies"
-              run: npm ci
+              run: |
+                rm -rf package-lock.json node_modules
+                npm install
 
             - name: "List Directories"
               run: ls

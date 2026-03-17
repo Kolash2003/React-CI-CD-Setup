@@ -17,3 +17,6 @@ jobs:
 
             - name: "Chech Node Version"
               run: node --version
+
+            - name: "Clone the Repository"
+              uses: actions/checkout@v4

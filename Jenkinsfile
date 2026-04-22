@@ -68,6 +68,7 @@ pipeline {
 
             steps {
                 sh '''
+                    export HOME="${WORKSPACE}"
                     export npm_config_cache="${WORKSPACE}/.npm-cache"
                     export npm_config_prefix="${WORKSPACE}/.npm-global"
                     export PATH="${WORKSPACE}/.npm-global/bin:${PATH}"

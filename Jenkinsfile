@@ -68,12 +68,13 @@ pipeline {
 
             steps {
                 sh '''
-                    export HOME="${WORKSPACE}"
+                    export HOME="${WORKSPACE}/.fake_home"
+                    mkdir -p "${HOME}"
                     export npm_config_cache="${WORKSPACE}/.npm-cache"
                     export npm_config_prefix="${WORKSPACE}/.npm-global"
                     export PATH="${WORKSPACE}/.npm-global/bin:${PATH}"
                     npm install -g vercel
-                    vercel --prod --token=$VERCEL_TOKEN --confirm --name=react-ci-cd-project
+                    vercel --prod --token=$VERCEL_TOKEN --yes --name=react-ci-cd-project
                 '''
             }
         }

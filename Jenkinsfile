@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+
+        stage('Clean up code') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Build') {
             agent {
                 docker {
@@ -10,8 +17,6 @@ pipeline {
             }
 
             steps {
-                cleanWs()
-                
                 sh '''
                     export npm_config_cache="${WORKSPACE}/.npm-cache"
                     ls -l

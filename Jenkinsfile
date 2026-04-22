@@ -4,13 +4,14 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'node:alpine'
+                    image 'node:18-alpine'
                     reuseNode true  // Reuse the node for the next stages
                 }
             }
 
             steps {
                 sh '''
+                    export npm_config_cache="${WORKSPACE}/.npm-cache"
                     ls -l
                     node --version
                     npm --version

@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+        NODE_ENV = 'test'
+        VERCEL_TOKEN = credentials('VERCEL_TOKEN')
+    }
+
     options {
         skipDefaultCheckout (true)
     }
@@ -66,6 +72,7 @@ pipeline {
                     export npm_config_prefix="${WORKSPACE}/.npm-global"
                     export PATH="${WORKSPACE}/.npm-global/bin:${PATH}"
                     npm install -g vercel
+                    vercel --prod --token=$VERCEL_TOKEN --confirm --name=react-ci-cd-project
                 '''
             }
         }

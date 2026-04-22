@@ -62,6 +62,9 @@ pipeline {
 
             steps {
                 sh '''
+                    export npm_config_cache="${WORKSPACE}/.npm-cache"
+                    export npm_config_prefix="${WORKSPACE}/.npm-global"
+                    export PATH="${WORKSPACE}/.npm-global/bin:${PATH}"
                     npm install -g vercel
                 '''
             }
